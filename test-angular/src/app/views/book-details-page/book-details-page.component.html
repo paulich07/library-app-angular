@@ -1,2 +1,10 @@
-<h2>Details of book</h2>
-Book id: {{id}}
+<div *ngIf="book === null; else noBookBlock">No book found</div>
+
+<ng-template #noBookBlock>
+    <h2>Details of book</h2>
+    {{book?.title}}
+    {{book?.author}}
+    {{book?.isbn}}
+    {{book?.views}}
+    {{book?.plot}}
+</ng-template>

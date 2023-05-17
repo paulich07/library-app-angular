@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Book } from './../../models/Book';
+import { Book } from 'src/app/models/Book';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class BookListComponent {
 
   goToDetails (isbn:number) {
     this._router.navigate(['book', isbn])
-    console.log(isbn);
+    // console.log(isbn);
   }
 
   @Input() bookList: Book[];
