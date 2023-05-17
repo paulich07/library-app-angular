@@ -2,9 +2,13 @@
 
 <ng-template #noBookBlock>
     <h2>Details of book</h2>
-    {{book?.title}}
-    {{book?.author}}
-    {{book?.isbn}}
-    {{book?.views}}
-    {{book?.plot}}
+    <form (submit)="saveBookDetails()">
+        <input type="text" [(ngModel)]="title" value="{{book?.title}}" />
+        <input type="text" [(ngModel)]="author" value="{{book?.author}}"/>
+        <input type="number" [(ngModel)]="isbn" value="{{book?.isbn}}"/>
+        <input type="number" [(ngModel)]="views" value="{{book?.views}}"/>
+        <input type="textarea" [(ngModel)]="plot" value="{{book?.plot}}"/>
+
+        <input type="submit" value="Salva"/>
+    </form>
 </ng-template>

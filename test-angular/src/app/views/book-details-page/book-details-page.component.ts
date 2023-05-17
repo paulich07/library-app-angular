@@ -13,6 +13,11 @@ export class BookDetailsPageComponent {
   book: BookDetails|null = null;
 
   id: string|null;
+  isbn:number = 0;
+  author:string|null = "";
+  title:string|null = "";
+  views:number = 0;
+  plot:string|null = "";
 
   constructor(public route: ActivatedRoute, public http: HttpClient) {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -39,6 +44,18 @@ export class BookDetailsPageComponent {
     .subscribe(res => {
       console.log(res);
     })
+    */
+  }
+
+  saveBookDetails():void{
+    /*
+    this.book = {
+      isbn: this.isbn,
+      title: this.title,
+      views: this.views,
+      author: this.author,
+      plot: this.plot,
+    }
     */
   }
 }
