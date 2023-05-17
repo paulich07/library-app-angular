@@ -1,3 +1,4 @@
 <h2>Cerca un libro</h2>
-<app-search-box></app-search-box>
+<h2 *ngIf="loading">Caricamento...</h2>
+<app-search-box (searchBookInParent)="searchBook($event)"></app-search-box>
 <app-book-list></app-book-list>

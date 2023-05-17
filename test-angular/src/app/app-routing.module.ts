@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LibraryPageComponent } from './views/library-page/library-page.component';
 import { CreateBookPageComponent } from './views/create-book-page/create-book-page.component';
+import { BookDetailsPageComponent } from './views/book-details-page/book-details-page.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateBookPageComponent,
+  },
+  {
+    path: 'book/:id',
+    component: BookDetailsPageComponent,
   }
 ];
 
