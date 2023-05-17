@@ -1,0 +1,8 @@
+<div class="book-list">
+    <div class="book-item" *ngFor="let book of books; let i = index;" (click)="goToDetails(book)">
+        <div class="title">{{book.title}}</div>
+        <div class="views">{{book.views}}</div>
+        <div class="isbn">{{book.isbn}}</div>
+        <button class="btn">Go to details</button>
+    </div>
+</div>

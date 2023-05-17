@@ -1,0 +1,13 @@
+<div class="search-box">
+    <h2 *ngIf="loading">Caricamento...</h2>
+    <form (submit)="onSearch('s')">
+        <input
+            type="text"
+            name="inputBook"
+            placeholder="Cerca libro per titolo, autore, ISBN..."
+            class="input-book"
+            [(ngModel)]="inputBook"
+        >
+        <input type="submit" value="Cerca" class="search-box-submit">
+    </form>
+</div>
