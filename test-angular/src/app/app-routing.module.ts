@@ -7,16 +7,22 @@ import { BookDetailsPageComponent } from './views/book-details-page/book-details
 const routes: Routes = [
   {
     path: '',
-    component: LibraryPageComponent
+    title: 'Library',
+    component: LibraryPageComponent,
   },
   {
     path: 'create',
+    title: 'Create A Book',
     component: CreateBookPageComponent,
   },
   {
     path: 'book/:id',
     component: BookDetailsPageComponent,
-  }
+  },
+  {
+    path: '**',
+    component: LibraryPageComponent, // or 404 page
+  },
 ];
 
 @NgModule({

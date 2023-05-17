@@ -9,11 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LibraryPageComponent {
 
+  books:Book[] = new Array();
+
   loading:boolean = false;
 
   constructor(public http: HttpClient) { }
 
   searchBook (s:string):void {
+    /*
     this.loading = true;
     let url = 'mockurl/api?search=' + s; 
     this.http.get<Book[]>(url)
@@ -21,5 +24,18 @@ export class LibraryPageComponent {
       console.log(res);
       this.loading = false;
     })
+    */
+    this.books = [
+      { 
+        title: 'Stranger Things',
+        isbn: 2349238423,
+        views: 2
+      },
+      { 
+        title: 'Harry Potter',
+        isbn: 34423345353,
+        views: 10
+      },
+    ]
   }
 }
