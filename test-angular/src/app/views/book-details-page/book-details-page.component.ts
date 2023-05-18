@@ -10,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookDetailsPageComponent {
 
-  book: BookDetails|null = null;
+  editMode:boolean = false;
+
+  book: BookDetails;
 
   id: string|null;
   isbn:number = 0;
@@ -23,7 +25,7 @@ export class BookDetailsPageComponent {
     this.id = this.route.snapshot.paramMap.get('id');
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {null
     if (this.id) {
       this.getBookDetails(this.id)
     }

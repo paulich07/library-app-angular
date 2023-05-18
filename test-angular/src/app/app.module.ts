@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,8 @@ import { LibraryPageComponent } from './views/library-page/library-page.componen
 import { CreateBookPageComponent } from './views/create-book-page/create-book-page.component';
 import { BookDetailsPageComponent } from './views/book-details-page/book-details-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { EditBookFormComponent } from './components/edit-book-form/edit-book-form.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CreateBookPageComponent,
     BookDetailsPageComponent,
     NavbarComponent,
+    BookDetailsComponent,
+    EditBookFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
