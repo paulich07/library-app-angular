@@ -1,5 +1,10 @@
 export class Book {
+    id:number;
     title:string;
+    author:string;
     isbn:number;
-    views:number;
+    numberOfReads:number;
+    dateAdded:string;
+    dateDeleted:string;
+    plot:string;
 }

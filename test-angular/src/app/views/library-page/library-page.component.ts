@@ -26,26 +26,9 @@ export class LibraryPageComponent {
   }
 
   searchBook (s:string):void {
-    /*
-    this.loading = true;
-    let url = 'mockurl/api?search=' + s; 
-    this.http.get<Book[]>(url)
-    .subscribe(res => {
-      console.log(res);
-      this.loading = false;
+    this.apiservice.searchBooks(s).subscribe(res => {
+      this.books = res;
     })
-    */
-    this.books = [
-      { 
-        title: 'Stranger Things',
-        isbn: 2349238423,
-        views: 2
-      },
-      { 
-        title: 'Harry Potter',
-        isbn: 34423345353,
-        views: 10
-      },
-    ]
   }
+
 }

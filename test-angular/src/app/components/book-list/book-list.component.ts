@@ -11,9 +11,9 @@ export class BookListComponent {
 
   constructor(private _router: Router) { }
 
-  goToDetails (isbn:number) {
-    this._router.navigate(['book', isbn])
-    // console.log(isbn);
+  goToDetails (id:number) {
+    console.log(id);
+    this._router.navigate(['book', id])
   }
 
   @Input() bookList: Book[];

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BookDetails } from 'src/app/models/BookDetails';
-import { HttpClient } from '@angular/common/http';
+import { Book } from 'src/app/models/Book';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-book-details-page',
@@ -12,45 +12,36 @@ export class BookDetailsPageComponent {
 
   editMode:boolean = false;
 
-  book: BookDetails;
+  book: Book;
 
-  id: string|null;
+  id: any;
+
   isbn:number = 0;
   author:string|null = "";
   title:string|null = "";
-  views:number = 0;
+  numberOfReads:number = 0;
   plot:string|null = "";
 
-  constructor(public route: ActivatedRoute, public http: HttpClient) {
-    this.id = this.route.snapshot.paramMap.get('id');
+  constructor(public route: ActivatedRoute, public apiservice: ApiService) {
   }
 
-  ngOnInit(): void {null
+  ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
       this.getBookDetails(this.id)
     }
     console.log(this.id);
   }
 
-  getBookDetails(id:string):void{
-    this.book = {
-      isbn: 2134324,
-      title: 'Harry Potter',
-      views: 10,
-      author: 'J.K. Rowling',
-      plot: 'Lorem ipsum',
-    }
-    /*
-    let url = 'mockurl/api/' + id; 
-    this.http.get<Book[]>(url)
-    .subscribe(res => {
+  getBookDetails(id:number):void{
+    this.apiservice.getBookById(id).subscribe(res => {
+      console.log('res');
       console.log(res);
     })
-    */
   }
 
   saveBookDetails():void{
-    /*
+    /*e
     this.book = {
       isbn: this.isbn,
       title: this.title,
