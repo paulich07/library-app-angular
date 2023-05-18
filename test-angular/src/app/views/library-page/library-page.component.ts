@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/Book';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-library-page',
@@ -13,7 +13,17 @@ export class LibraryPageComponent {
 
   loading:boolean = false;
 
-  constructor(public http: HttpClient) { }
+  constructor(public apiservice: ApiService) { }
+
+  ngOnInit():void {
+    this.listAllBooks()
+  }
+
+  listAllBooks():void {
+    this.apiservice.getBooks().subscribe(res => {
+      this.books = res;
+    })
+  }
 
   searchBook (s:string):void {
     /*
