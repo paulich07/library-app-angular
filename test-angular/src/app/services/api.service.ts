@@ -21,8 +21,13 @@ export class ApiService {
     }
 
     getBookById(id:number): Observable<Book> {
-        let url = 'http://localhost:8080/' + id;
+        let url = 'http://localhost:8080/books/' + id;
         return this.http.get<Book>(url);
+    }
+
+    editBook(id:number, form:FormGroup): Observable<Book> {
+        let url = 'http://localhost:8080/books/' + id;
+        return this.http.put<Book>(url, form);
     }
 
     createBook(form:FormGroup): Observable<Book> {
