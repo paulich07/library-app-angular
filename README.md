@@ -1,6 +1,6 @@
 # test-angular
 ## Launch as docker
-``docker-compose up`` <br>
+``docker-compose up -d`` <br>
 ## Launch without docker
 ``cd test-angular`` <br>
 ``npm install`` <br>
