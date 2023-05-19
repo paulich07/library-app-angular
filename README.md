@@ -1,4 +1,4 @@
 # test-angular
 
-npm install
+npm install <br>
 ng serve --open
