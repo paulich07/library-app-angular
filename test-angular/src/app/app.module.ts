@@ -12,7 +12,7 @@ import { CreateBookPageComponent } from './views/create-book-page/create-book-pa
 import { BookDetailsPageComponent } from './views/book-details-page/book-details-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { EditBookFormComponent } from './components/edit-book-form/edit-book-form.component';
+import { FormBookComponent } from './components/form-book/form-book.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EditBookFormComponent } from './components/edit-book-form/edit-book-for
     BookDetailsPageComponent,
     NavbarComponent,
     BookDetailsComponent,
-    EditBookFormComponent,
+    FormBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
     <button (click)="editMode = !editMode">{{editMode ? 'Annulla modifiche' : 'Modifica libro'}}</button>
 
     <div *ngIf="editMode else detailsBlock">
-        <app-edit-book-form></app-edit-book-form>
+        <app-form-book></app-form-book>
     </div>
     <ng-template #detailsBlock>
         <app-book-details [book]="book"></app-book-details>

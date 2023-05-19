@@ -40,8 +40,8 @@ export class BookDetailsPageComponent {
     })
   }
 
-  saveBookDetails():void{
-    /*e
+  saveBookDetails():void {
+    /*
     this.book = {
       isbn: this.isbn,
       title: this.title,

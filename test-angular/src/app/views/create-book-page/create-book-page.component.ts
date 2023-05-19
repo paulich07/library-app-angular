@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-create-book-page',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class CreateBookPageComponent {
 
+  saved:boolean = false;
+
+  constructor(public apiservice: ApiService) {}
+
+  createBook($event:any) {
+    let form = $event.value;
+    this.apiservice.createBook(form).subscribe(res => {
+      this.saved = true;
+    });
+  }
 }

@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSave()" [formGroup]="form">
+    <label for="title">Titolo</label>
+    <input type="text" formControlName="title"/>
+
+    <label for="title">Autore</label>
+    <input type="text" formControlName="author"/>
+
+    <label for="title">Isbn</label>
+    <input type="number" formControlName="isbn"/>
+
+    <label for="title">Views</label>
+    <input type="number" formControlName="numberOfReads"/>
+
+    <label for="title">Plot</label>
+    <input type="textarea" formControlName="plot"/>
+
+    <input type="submit" value="Salva"/>
+</form>
+
+{{bookToEdit}}
