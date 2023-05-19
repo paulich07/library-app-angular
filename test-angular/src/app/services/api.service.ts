@@ -52,4 +52,9 @@ export class ApiService {
         let url = 'http://localhost:8080/books/' + id;
         return this.http.delete<Book>(url);
     }
+
+    addOneView(id:number): Observable<Book> {
+        let url = 'http://localhost:8080/books/' + id + '/read';
+        return this.http.delete<Book>(url);
+    }
 }

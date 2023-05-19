@@ -55,4 +55,5 @@ export class BookDetailsPageComponent {
 
     this._router.navigate(['']);
   }
+
 }
