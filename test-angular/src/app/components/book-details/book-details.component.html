@@ -1,22 +1,21 @@
-<h2>Dettaglio del libro</h2>
-<div>
-    Titolo: {{book.title}}
-</div>
-<div>
-    Autore: {{book.author}}
-</div>
-<div>
-    ISBN: {{book.isbn}}
-</div>
-<div>
-    Numero letture: {{book.numberOfReads}}
-</div>
-<div>
-    Trama: {{book.plot}}
-</div>
-<div>
-    Trama: {{book.dateAdded}}
-</div>
-<div>
-    Trama: {{book.dateDeleted}}
+<div *ngIf="book">
+    <h2>Dettaglio del libro</h2>
+    <div>
+        Titolo: {{book.title}}
+    </div>
+    <div>
+        Autore: {{book.author}}
+    </div>
+    <div>
+        ISBN: {{book.isbn}}
+    </div>
+    <div>
+        Numero letture: {{book.numberOfReads}}
+    </div>
+    <div>
+        Trama: {{book.plot}}
+    </div>
+    <div>
+        Aggiunto il: {{book.dateAdded}}
+    </div>
 </div>

@@ -13,7 +13,6 @@ export class FormBookComponent {
 
   @Input() bookToEdit: Book;
 
-
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
       'title': ['', Validators.required],
@@ -32,7 +31,6 @@ export class FormBookComponent {
       this.form.controls['user'].setErrors(null);
     }
   }
-
 
   @Output() saveBook = new EventEmitter<FormGroup>();
   

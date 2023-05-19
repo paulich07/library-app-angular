@@ -16,12 +16,6 @@ export class BookDetailsPageComponent {
 
   id: any;
 
-  isbn:number = 0;
-  author:string|null = "";
-  title:string|null = "";
-  numberOfReads:number = 0;
-  plot:string|null = "";
-
   constructor(public route: ActivatedRoute, public apiservice: ApiService) {
   }
 
@@ -35,8 +29,7 @@ export class BookDetailsPageComponent {
 
   getBookDetails(id:number):void{
     this.apiservice.getBookById(id).subscribe(res => {
-      console.log('res');
-      console.log(res);
+      this.book = res;
     })
   }
 
