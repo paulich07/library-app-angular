@@ -1,23 +1,31 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, endWith } from "rxjs";
+import { Observable, map } from "rxjs";
 import { Book } from "../models/Book";
 import { FormGroup } from "@angular/forms";
+
+interface BookResponse {
+    content: Book[];
+    totalElements: number;
+    totalPages: number;
+    // Other properties in the response object
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
     constructor(public http: HttpClient){}
+    
 
     searchBooks(s:string): Observable<Book[]> {
         let url = 'http://localhost:8080/books?search='+s;
         return this.http.get<Book[]>(url);
     }
 
-    getAllBooks(): Observable<Book[]> {
+    getAllBooks(): Observable<BookResponse> {
         let url = 'http://localhost:8080/books';
-        return this.http.get<Book[]>(url);
+        return this.http.get<BookResponse>(url);
     }
 
     getBookById(id:number): Observable<Book> {

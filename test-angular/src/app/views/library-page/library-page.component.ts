@@ -20,9 +20,15 @@ export class LibraryPageComponent {
   }
 
   listAllBooks():void {
-    this.apiservice.getAllBooks().subscribe(res => {
-      this.books = res;
-    })
+    this.apiservice.getAllBooks().subscribe(
+      (res) => {
+        this.books = res.content;
+        console.log(res.content);
+      },
+      (err) => {
+        console.log('Error:', err);
+      }
+    )
   }
 
   searchBook (s:string):void {
