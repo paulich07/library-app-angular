@@ -1,20 +1,28 @@
 <form (ngSubmit)="onSave()" [formGroup]="form">
-    <label for="title">Titolo</label>
-    <input type="text" formControlName="title"/>
+    <div class="title">
+        <label for="title">Titolo</label>
+        <input type="text" formControlName="title"/>
+    </div>
+        
+    <div class="author">
+        <label for="title">Autore</label>
+        <input type="text" formControlName="author"/>
+    </div>
 
-    <label for="title">Autore</label>
-    <input type="text" formControlName="author"/>
+    <div>
+        <label for="title">ISBN</label>
+        <input type="text" formControlName="isbn"/>
+    </div>
 
-    <label for="title">Isbn</label>
-    <input type="number" formControlName="isbn"/>
+    <div>
+        <label for="title">N. Letture</label>
+        <input type="number" formControlName="numberOfReads"/>
+    </div>
 
-    <label for="title">Views</label>
-    <input type="number" formControlName="numberOfReads"/>
-
-    <label for="title">Plot</label>
-    <input type="textarea" formControlName="plot"/>
+    <div>
+        <label for="title">Trama</label>
+        <input type="textarea" formControlName="plot"/>
+    </div>
 
     <input type="submit" value="Salva"/>
 </form>
-
-{{bookToEdit}}

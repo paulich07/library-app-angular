@@ -2,7 +2,7 @@ export class Book {
     id:number;
     title:string;
     author:string;
-    isbn:number;
+    isbn:string;
     numberOfReads:number;
     dateAdded:string;
     dateDeleted:string;

@@ -10,17 +10,32 @@ import { Book } from 'src/app/models/Book';
 export class FormBookComponent {
 
   form: FormGroup;
+  // bookToEdit: Book;
 
-  @Input() bookToEdit: Book;
+  @Input() set bookToEdit(newBook:Book) {
+    if (JSON.stringify(this.bookToEdit) !== '{}') {
+      this.setForm(newBook);
+    }1
+  }
+
+  setForm(newBook:Book) {
+    this.form.patchValue({
+      title: newBook.title,
+      author: newBook.author,
+      isbn: newBook.isbn,
+      numberOfReads: newBook.numberOfReads,
+      plot: newBook.plot,
+    })
+  }
 
   constructor(public fb: FormBuilder) {
-    this.form = fb.group({
-      'title': ['', Validators.required],
-      'author': ['', Validators.required],
-      'isbn': ['', Validators.required],
-      'numberOfReads': ['', Validators.required],
-      'plot': ['', Validators.required],
-    })
+      this.form = fb.group({
+        'title': ['', Validators.required],
+        'author': ['', Validators.required],
+        'isbn': ['', Validators.required],
+        'numberOfReads': [0, Validators.required],
+        'plot': [''],
+      })
   }
 
   checkTitle() {
@@ -41,11 +56,5 @@ export class FormBookComponent {
     }
 
     this.saveBook.emit(this.form);
-
-    // emit event
-    console.log(
-      this.form.controls['title'].value,
-      this.form.controls['author'].value
-    );
   }
 }
