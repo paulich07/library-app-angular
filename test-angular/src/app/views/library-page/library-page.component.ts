@@ -20,7 +20,7 @@ export class LibraryPageComponent {
   }
 
   listAllBooks():void {
-    this.apiservice.getBooks().subscribe(res => {
+    this.apiservice.getAllBooks().subscribe(res => {
       this.books = res;
     })
   }

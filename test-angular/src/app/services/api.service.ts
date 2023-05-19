@@ -15,7 +15,7 @@ export class ApiService {
         return this.http.get<Book[]>(url);
     }
 
-    getBooks(): Observable<Book[]> {
+    getAllBooks(): Observable<Book[]> {
         let url = 'http://localhost:8080/books';
         return this.http.get<Book[]>(url);
     }
@@ -46,5 +46,10 @@ export class ApiService {
         console.log(form);
         let url = 'http://localhost:8080/books';
         return this.http.post<Book>(url, form);
+    }
+
+    deleteBook(id:number): Observable<Book> {
+        let url = 'http://localhost:8080/books/' + id;
+        return this.http.delete<Book>(url);
     }
 }

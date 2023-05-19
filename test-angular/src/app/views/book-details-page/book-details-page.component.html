@@ -4,7 +4,8 @@
     <button (click)="editMode = !editMode">{{editMode ? 'Annulla modifiche' : 'Modifica libro'}}</button>
 
     <div *ngIf="editMode else detailsBlock">
-        <app-form-book [bookToEdit]="book"></app-form-book>
+        <app-form-book [bookToEdit]="book" (saveBook)="editBook($event)"></app-form-book>
+        <button (click)="deleteBook()">Elimina</button>
     </div>
     <ng-template #detailsBlock>
         <app-book-details [book]="book"></app-book-details>

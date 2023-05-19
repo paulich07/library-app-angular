@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/Book';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-details-page',
@@ -16,7 +17,7 @@ export class BookDetailsPageComponent {
 
   id: any;
 
-  constructor(public route: ActivatedRoute, public apiservice: ApiService) {
+  constructor(public route: ActivatedRoute, public apiservice: ApiService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,7 +25,6 @@ export class BookDetailsPageComponent {
     if (this.id) {
       this.getBookDetails(this.id)
     }
-    console.log(this.id);
   }
 
   getBookDetails(id:number):void{
@@ -33,15 +33,26 @@ export class BookDetailsPageComponent {
     })
   }
 
-  saveBookDetails():void {
-    /*
-    this.book = {
-      isbn: this.isbn,
-      title: this.title,
-      views: this.views,
-      author: this.author,
-      plot: this.plot,
-    }
-    */
+  editBook($event:any):void {
+    let form = $event.value;
+    this.apiservice.editBook(this.id, form).subscribe(res => {
+      alert('updated')
+    })
+  }
+
+  createBook($event:any):void {
+    let form = $event.value;
+    this.apiservice.createBook(form).subscribe(res => {
+      alert('created')
+    })
+  }
+
+  deleteBook():void {
+    console.log('delete');
+    this.apiservice.deleteBook(this.id).subscribe(res => {
+      alert('deleted')
+    })
+
+    this._router.navigate(['']);
   }
 }
