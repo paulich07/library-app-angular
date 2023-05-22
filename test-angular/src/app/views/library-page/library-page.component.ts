@@ -25,10 +25,10 @@ export class LibraryPageComponent {
   loading:boolean = false;
 
   filterOptions = [
-    { value: 'dateAdded', label: 'Data di inserimento' },
+    { value: 'dateAdded', label: 'Data di inserimento (dal più recente)' },
     { value: 'title', label: 'Titolo (A-Z)' },
     { value: 'author', label: 'Autore (A-Z)' },
-    { value: 'numberOfReads', label: 'N. Letture' },
+    { value: 'numberOfReads', label: 'N. Letture (dal meno letto)' },
   ];
 
   constructor(public apiservice: ApiService, private _router: Router) { }
@@ -42,7 +42,7 @@ export class LibraryPageComponent {
   }
 
   searchBook () {
-    let params = { 'sort': this.sort, 'sortDesc': this.sortDesc, 'search': this.search };
+    let params = { 'sort': this.sort, 'search': this.search };
     this.apiservice.searchBooks(params).subscribe(
       res => {
         console.log(res.content);
