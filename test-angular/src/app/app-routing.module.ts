@@ -12,11 +12,12 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    title: 'Create A Book',
+    title: 'CreateABook',
     component: CreateBookPageComponent,
   },
   {
     path: 'book/:id',
+    title: 'BookDetails',
     component: BookDetailsPageComponent,
   },
   {

@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item"><a [routerLink]="['/']" [routerLinkActive]="['is-active']" class="nav-link">Libreria</a></li>
-            <li class="nav-item"><a [routerLink]="['/create']" [routerLinkActive]="['is-active']" class="nav-link">Crea un libro</a></li>
+            <li class="nav-item"><a [routerLink]="['/create']" [routerLinkActive]="['is-active']" class="nav-link">Aggiungi libro</a></li>
         </ul>
     
         <app-search-box class="ms-auto" (searchBookInParent)="searchBook($event)"></app-search-box>

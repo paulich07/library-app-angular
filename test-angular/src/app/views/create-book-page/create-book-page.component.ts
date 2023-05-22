@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -8,14 +9,19 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CreateBookPageComponent {
 
-  saved:boolean = false;
-
-  constructor(public apiservice: ApiService) {}
+  constructor(public apiservice: ApiService, private _router: Router) {}
 
   createBook($event:any) {
     let form = $event.value;
-    this.apiservice.createBook(form).subscribe(res => {
-      this.saved = true;
-    });
+    console.log(form);
+    this.apiservice.createBook(form).subscribe(
+      (res) => {
+        console.log(res.id);
+        this._router.navigate(['book', res.id])
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
   }
 }

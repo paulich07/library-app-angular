@@ -1,9 +1,12 @@
 <div *ngIf="book">
-    <div class="row">
+
+    <div class="row mb-4">
         <div class="col-4">
             <div class="row">
                 <div class="col-12">
-                    Titolo
+                    <div class="fw-bold">
+                        Titolo
+                    </div>
                 </div>
                 <div class="col-12">
                     {{book.title}}
@@ -13,7 +16,9 @@
         <div class="col-4">
             <div class="row">
                 <div class="col-12">
-                    Autore
+                    <div class="fw-bold">
+                        Autore
+                    </div>
                 </div>
                 <div class="col-12">
                     {{book.author}}
@@ -23,7 +28,9 @@
         <div class="col-4">
             <div class="row">
                 <div class="col-12">
-                    ISBN
+                    <div class="fw-bold">
+                        ISBN
+                    </div>
                 </div>
                 <div class="col-12">
                     {{book.isbn}}
@@ -32,11 +39,13 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-12">
             <div class="row">
                 <div class="col-12">
-                    Trama
+                    <div class="fw-bold">
+                        Trama
+                    </div>
                 </div>
                 <div class="col-12">
                     {{book.plot}}
@@ -45,10 +54,30 @@
         </div>
     </div>
 
-    <div>
-        Numero letture: {{book.numberOfReads}}
-    </div>
-    <div>
-        Aggiunto il: {{book.dateAdded}}
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="fw-bold">
+                        Numero letture
+                    </div>
+                </div>
+                <div class="col-12">
+                    {{book.numberOfReads}}
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="fw-bold">
+                        Aggiunto il
+                    </div>
+                </div>
+                <div class="col-12">
+                    {{toReadableDate(book.dateAdded)}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

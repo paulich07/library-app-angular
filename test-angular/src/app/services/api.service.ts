@@ -8,7 +8,7 @@ interface BookResponse {
     content: Book[];
     totalElements: number;
     totalPages: number;
-    // Other properties in the response object
+    number: number;
 }
 
 @Injectable({
@@ -17,10 +17,11 @@ interface BookResponse {
 export class ApiService {
     constructor(public http: HttpClient){}
     
-
-    searchBooks(s:string): Observable<Book[]> {
-        let url = 'http://localhost:8080/books?search='+s;
-        return this.http.get<Book[]>(url);
+    searchBooks(s:string, params:object): Observable<BookResponse> {
+        console.log(params);
+        let queryParams = Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&');
+        let url = 'http://localhost:8080/books?' + queryParams;
+        return this.http.get<BookResponse>(url);
     }
 
     getAllBooks(): Observable<BookResponse> {

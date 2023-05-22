@@ -10,7 +10,6 @@ import { Book } from 'src/app/models/Book';
 export class FormBookComponent {
 
   form: FormGroup;
-  // bookToEdit: Book;
 
   @Input() set bookToEdit(newBook:Book) {
     if (JSON.stringify(this.bookToEdit) !== '{}') {
@@ -26,6 +25,13 @@ export class FormBookComponent {
       numberOfReads: newBook.numberOfReads,
       plot: newBook.plot,
     })
+  }
+
+  setReads (n:number) {
+    this.form.patchValue({
+      numberOfReads: this.form.get('numberOfReads')?.value + n
+    })
+    console.log(this.form.get('numberOfReads')?.value);
   }
 
   constructor(public fb: FormBuilder) {
@@ -58,9 +64,6 @@ export class FormBookComponent {
     }
 
     this.saveBook.emit(this.form);
-  }
-  onDelete() {
-    this.deleteBook.emit();
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/Book';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-library-page',
@@ -9,22 +10,41 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LibraryPageComponent {
 
+  sortBy:String='dateAdded';
+  sortDesc:boolean=true;
+  size:number;
+  page:number;
+  search:string;
+
   books:Book[] = new Array();
+
+  totalPages:number;
+  currentPage:number;
+  totalElements:number;
 
   loading:boolean = false;
 
-  constructor(public apiservice: ApiService) { }
+  constructor(public apiservice: ApiService, private _router: Router) { }
 
-  ngOnInit():void {
-    // to do if url has params search book
+  ngOnInit () {
     this.listAllBooks()
   }
 
-  listAllBooks():void {
-    this.apiservice.getAllBooks().subscribe(
-      (res) => {
-        this.books = res.content;
+  listAllBooks() {
+    this.searchBook('');
+  }
+
+  searchBook (s:string) {
+    this.search = s;
+    let params = { 'sortBy': this.sortBy, 'sortDesc': this.sortDesc, 'search': this.search };
+    this.apiservice.searchBooks(s, params).subscribe(
+      res => {
         console.log(res.content);
+        this.books = res.content;
+        this.books = res.content;
+        this.currentPage = res.number;
+        this.totalElements = res.totalElements;
+        this.totalPages = res.totalPages;
       },
       (err) => {
         console.log('Error:', err);
@@ -32,13 +52,7 @@ export class LibraryPageComponent {
     )
   }
 
-  searchBook (s:string):void {
-    // to do search component calls ChangeURL function
-    // to do changeURLParams function
-    // to do add listeners of url (if url changes searchBook is called)
-    this.apiservice.searchBooks(s).subscribe(res => {
-      this.books = res;
-    })
+  goToLibrary () {
+    this._router.navigate(['Library']);
   }
-
 }

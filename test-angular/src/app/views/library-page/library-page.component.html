@@ -7,4 +7,64 @@
 </div>
 
 <h2 *ngIf="loading">Caricamento...</h2>
-<app-book-list [bookList]="books"></app-book-list>
+
+<div *ngIf="books.length > 0; else nullBlock">
+    
+    <div class="row mb-2">
+        <div class="col-3 d-flex align-items-center">
+            <span>
+                {{ totalElements }} libri trovati {{ search.length > 0 ? 'per "' + search + '"' : ''  }}
+            </span>
+        </div>
+        <div class="col">
+
+            <!--nav class="d-flex mx-auto">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Precedente</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Successivo</a></li>
+                </ul>
+            </nav-->
+
+        </div>
+        <div class="col-3">
+            <select class="form-select" [ngValue]="">
+                <option value="dateAdded" selected>Data di inserimento</option>
+                <option value="title">Titolo</option>
+                <option value="author">Autore</option>
+                <option value="numberOfReads">Letture</option>
+            </select>
+        </div>
+    </div>
+    
+    <app-book-list [bookList]="books"></app-book-list>
+
+    <div class="row">
+        <div class="col-auto m-auto">
+            <!--nav>
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Precedente</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Successivo</a></li>
+                </ul>
+            </nav-->
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #nullBlock>
+    <div class="row m-5">
+        <div class="col-12 text-center mb-4">
+            Nessun libro trovato
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-primary" (click)="goToLibrary()">Torna all'elenco</button>
+        </div>
+    </div>
+</ng-template>

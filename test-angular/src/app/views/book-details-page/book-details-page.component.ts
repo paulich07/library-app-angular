@@ -36,24 +36,28 @@ export class BookDetailsPageComponent {
   editBook($event:any):void {
     let form = $event.value;
     this.apiservice.editBook(this.id, form).subscribe(res => {
-      alert('updated')
+      this.getBookDetails(this.id);
+      this.editMode = false;
+      // to do feedback
     })
   }
 
   createBook($event:any):void {
     let form = $event.value;
     this.apiservice.createBook(form).subscribe(res => {
-      alert('created')
+      // alert('created')
     })
+
+    this._router.navigate(['Library']);
   }
 
   deleteBook():void {
     console.log('delete');
     this.apiservice.deleteBook(this.id).subscribe(res => {
-      alert('deleted')
+      // alert('libro eliminato')
     })
 
-    this._router.navigate(['']);
+    this._router.navigate(['Library']);
   }
 
 }
