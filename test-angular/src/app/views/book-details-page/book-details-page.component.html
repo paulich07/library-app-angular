@@ -1,13 +1,26 @@
-<div *ngIf="book === null; else bookBlock">No book found</div>
+<div *ngIf="book === null; else bookBlock">Libro non trovato</div>
 
 <ng-template #bookBlock>
-    <button (click)="editMode = !editMode">{{editMode ? 'Annulla modifiche' : 'Modifica libro'}}</button>
-
-    <div *ngIf="editMode else detailsBlock">
-        <app-form-book [bookToEdit]="book" (saveBook)="editBook($event)"></app-form-book>
-        <button (click)="deleteBook()">Elimina</button>
+    <div class="d-flex">
+        <h2 class="d-flex">
+            <a class="nav-link me-2" [routerLink]="['/']">Libreria ></a>
+            Dettaglio libro
+        </h2>
     </div>
-    <ng-template #detailsBlock>
-        <app-book-details [book]="book"></app-book-details>
-    </ng-template>
+
+    <div class="card p-4">
+        <div class="row">
+            <div class="col text-end">
+                <button class="btn btn-outline-secondary" (click)="editMode = !editMode">{{editMode ? 'Annulla modifiche' : 'Modifica libro'}}</button>
+            </div>
+        </div>
+
+        <div *ngIf="editMode else detailsBlock">
+            <app-form-book [bookToEdit]="book" (saveBook)="editBook($event)" (deleteBook)="deleteBook()"></app-form-book>
+        </div>
+        <ng-template #detailsBlock>
+            <app-book-details [book]="book"></app-book-details>
+        </ng-template>
+    </div>
+
 </ng-template>

@@ -1,19 +1,52 @@
 <div *ngIf="book">
-    <h2>Dettaglio del libro</h2>
-    <div>
-        Titolo: {{book.title}}
+    <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    Titolo
+                </div>
+                <div class="col-12">
+                    {{book.title}}
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    Autore
+                </div>
+                <div class="col-12">
+                    {{book.author}}
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    ISBN
+                </div>
+                <div class="col-12">
+                    {{book.isbn}}
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        Autore: {{book.author}}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    Trama
+                </div>
+                <div class="col-12">
+                    {{book.plot}}
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        ISBN: {{book.isbn}}
-    </div>
+
     <div>
         Numero letture: {{book.numberOfReads}}
-    </div>
-    <div>
-        Trama: {{book.plot}}
     </div>
     <div>
         Aggiunto il: {{book.dateAdded}}

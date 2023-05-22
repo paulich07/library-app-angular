@@ -1,28 +1,61 @@
 <form (ngSubmit)="onSave()" [formGroup]="form">
-    <div class="title">
-        <label for="title">Titolo</label>
-        <input type="text" formControlName="title"/>
-    </div>
-        
-    <div class="author">
-        <label for="title">Autore</label>
-        <input type="text" formControlName="author"/>
+    <div class="row mb-4">
+        <div class="col-4">
+            <div class="row" class="form-group">
+                <div class="col-12">
+                    <label for="title" class="form-label">Titolo</label>
+                    <input type="text" id="title" formControlName="title" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row" class="form-group">
+                <div class="col-12">
+                    <label class="form-label" for="author">Autore</label>
+                    <input type="text" id="author" formControlName="author" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row" class="form-group">
+                <div class="col-12">
+                    <label class="form-label" for="isbn">ISBN</label>
+                    <input type="text" id="isbn" formControlName="isbn" class="form-control"/>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <label for="title">ISBN</label>
-        <input type="text" formControlName="isbn"/>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="row" class="form-group">
+                <div class="col-12">
+                    <label for="plot" class="form-label">Trama</label>
+                    <textarea class="form-control" formControlName="plot" id="plot" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <label for="title">N. Letture</label>
-        <input type="number" formControlName="numberOfReads"/>
+    <div class="row mb-4">
+        <div class="col-3 me-auto">
+            <label for="numberOfReads" class="form-label">Numero letture</label>
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button">-</button>
+                <input type="text" class="form-control" id="numberOfReads" [value]="form.controls['numberOfReads'].value">
+                <button class="btn btn-outline-secondary" type="button">+</button>
+            </div>
+        </div>
+        <div class="col-4 d-flex align-items-center">
+            <button type="submit" class="btn btn-primary w-100" (submit)="onSave()">Salva</button>
+        </div>
     </div>
 
-    <div>
-        <label for="title">Trama</label>
-        <input type="textarea" formControlName="plot"/>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-outline-danger" (click)="onDelete()">Elimina libro</button>
+        </div>
+
     </div>
 
-    <input type="submit" value="Salva"/>
 </form>

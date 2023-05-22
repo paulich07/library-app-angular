@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  searchBook ($event:any):void {
+    console.log($event);
+    // to do go to library and search by s
+  }
 }

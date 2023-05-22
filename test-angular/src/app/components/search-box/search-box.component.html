@@ -1,12 +1,12 @@
-<div class="search-box">
-    <form (submit)="onSearch()">
+<div class="search-box d-block">
+    <form class="form-inline d-inline-flex" (submit)="onSearch()">
         <input
-            type="text"
+            type="search"
             name="inputBook"
-            placeholder="Cerca libro per titolo, autore, ISBN..."
-            class="input-book"
+            placeholder="Cerca per titolo, autore, ISBN..."
+            class="form-control"
             [(ngModel)]="inputBook"
         >
-        <input type="submit" value="Cerca" class="search-box-submit">
+        <input type="submit" value="Cerca" class="btn btn-primary">
     </form>
 </div>

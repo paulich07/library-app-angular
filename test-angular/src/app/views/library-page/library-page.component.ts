@@ -16,6 +16,7 @@ export class LibraryPageComponent {
   constructor(public apiservice: ApiService) { }
 
   ngOnInit():void {
+    // to do if url has params search book
     this.listAllBooks()
   }
 
@@ -32,6 +33,9 @@ export class LibraryPageComponent {
   }
 
   searchBook (s:string):void {
+    // to do search component calls ChangeURL function
+    // to do changeURLParams function
+    // to do add listeners of url (if url changes searchBook is called)
     this.apiservice.searchBooks(s).subscribe(res => {
       this.books = res;
     })

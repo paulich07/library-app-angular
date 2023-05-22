@@ -47,9 +47,11 @@ export class FormBookComponent {
     }
   }
 
-  @Output() saveBook = new EventEmitter<FormGroup>();
+  @Output() 
+  saveBook = new EventEmitter<FormGroup>();
+  deleteBook = new EventEmitter();
   
-  onSave():void {
+  onSave() {
     if(!this.form.valid) {
       alert('Compilare tutti i campi');
       return;
@@ -57,4 +59,8 @@ export class FormBookComponent {
 
     this.saveBook.emit(this.form);
   }
+  onDelete() {
+    this.deleteBook.emit();
+  }
+
 }
