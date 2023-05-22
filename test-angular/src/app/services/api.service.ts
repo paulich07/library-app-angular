@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, map } from "rxjs";
+import { Observable } from "rxjs";
 import { Book } from "../models/Book";
 import { FormGroup } from "@angular/forms";
 
@@ -17,7 +17,7 @@ interface BookResponse {
 export class ApiService {
     constructor(public http: HttpClient){}
     
-    searchBooks(s:string, params:object): Observable<BookResponse> {
+    searchBooks(params:object): Observable<BookResponse> {
         console.log(params);
         let queryParams = Object.entries(params).map(([key, value]) => `${key}=${value}`).join('&');
         let url = 'http://localhost:8080/books?' + queryParams;

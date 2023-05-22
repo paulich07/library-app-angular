@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LibraryPageComponent {
 
-  sortBy:String='dateAdded';
+  sort:String='dateAdded';
   sortDesc:boolean=true;
   size:number;
   page:number;
-  search:string;
+  search:string = '';
 
   books:Book[] = new Array();
 
@@ -24,6 +24,13 @@ export class LibraryPageComponent {
 
   loading:boolean = false;
 
+  filterOptions = [
+    { value: 'dateAdded', label: 'Data di inserimento' },
+    { value: 'title', label: 'Titolo (A-Z)' },
+    { value: 'author', label: 'Autore (A-Z)' },
+    { value: 'numberOfReads', label: 'N. Letture' },
+  ];
+
   constructor(public apiservice: ApiService, private _router: Router) { }
 
   ngOnInit () {
@@ -31,13 +38,12 @@ export class LibraryPageComponent {
   }
 
   listAllBooks() {
-    this.searchBook('');
+    this.searchBook();
   }
 
-  searchBook (s:string) {
-    this.search = s;
-    let params = { 'sortBy': this.sortBy, 'sortDesc': this.sortDesc, 'search': this.search };
-    this.apiservice.searchBooks(s, params).subscribe(
+  searchBook () {
+    let params = { 'sort': this.sort, 'sortDesc': this.sortDesc, 'search': this.search };
+    this.apiservice.searchBooks(params).subscribe(
       res => {
         console.log(res.content);
         this.books = res.content;
@@ -52,7 +58,12 @@ export class LibraryPageComponent {
     )
   }
 
+  updateSearch (s:string) {
+    this.search = (s.length > 0) ? s : '';
+    this.searchBook();
+  }
+
   goToLibrary () {
-    this._router.navigate(['Library']);
+    this._router.navigate(['/']);
   }
 }

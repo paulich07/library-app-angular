@@ -2,7 +2,7 @@
 <h2 class="text-center">Cerca un libro</h2>
 <div class="row mb-5">
     <div class="col d-flex justify-content-center">
-        <app-search-box (searchBookInParent)="searchBook($event)"></app-search-box>
+        <app-search-box (searchBookInParent)="updateSearch($event)"></app-search-box>
     </div>
 </div>
 
@@ -30,11 +30,10 @@
 
         </div>
         <div class="col-3">
-            <select class="form-select" [ngValue]="">
-                <option value="dateAdded" selected>Data di inserimento</option>
-                <option value="title">Titolo</option>
-                <option value="author">Autore</option>
-                <option value="numberOfReads">Letture</option>
+            <select class="form-select" [(ngModel)]="sort" (ngModelChange)="searchBook()">
+                <option *ngFor="let option of filterOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
             </select>
         </div>
     </div>

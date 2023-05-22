@@ -48,7 +48,7 @@ export class BookDetailsPageComponent {
       // alert('created')
     })
 
-    this._router.navigate(['Library']);
+    this._router.navigate(['/']);
   }
 
   deleteBook():void {
@@ -57,7 +57,7 @@ export class BookDetailsPageComponent {
       // alert('libro eliminato')
     })
 
-    this._router.navigate(['Library']);
+    this._router.navigate(['/']);
   }
 
 }
