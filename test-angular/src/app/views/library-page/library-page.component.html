@@ -30,7 +30,7 @@
 
         </div>
         <div class="col-3">
-            <select class="form-select" [(ngModel)]="sort" (ngModelChange)="searchBook()">
+            <select class="form-select" [(ngModel)]="sort" (ngModelChange)="searchBooks()">
                 <option *ngFor="let option of filterOptions" [value]="option.value">
                     {{ option.label }}
                   </option>

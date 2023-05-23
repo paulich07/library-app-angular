@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-lg navbar-light bg-light px-5">
     <a class="navbar-brand" [routerLink]="['/']">
-        <img src="" width="30" height="30" alt="">
+        <img src="/assets/images/read-book-icon.png" width="30" height="20" alt="book image">
         Libreria
     </a>
 
@@ -14,6 +14,6 @@
             <li class="nav-item"><a [routerLink]="['/create']" [routerLinkActive]="['is-active']" class="nav-link">Aggiungi libro</a></li>
         </ul>
     
-        <app-search-box class="ms-auto" (searchBookInParent)="searchBook($event)"></app-search-box>
+        <app-search-box class="ms-auto" (searchBookInParent)="searchBookInLibrary($event)"></app-search-box>
     </div>
 </div>

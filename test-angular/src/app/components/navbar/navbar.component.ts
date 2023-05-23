@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  searchBook ($event:any):void {
-    console.log($event);
-    // to do go to library and search by s
+  constructor(private _router:Router) {};
+
+  searchBookInLibrary ($event:any) {
+    this._router.navigate(['/'], { queryParams: {'search':$event} })
   }
 }

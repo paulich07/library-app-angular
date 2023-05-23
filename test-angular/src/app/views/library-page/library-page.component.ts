@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/Book';
 import { ApiService } from 'src/app/services/api.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-library-page',
@@ -31,21 +31,38 @@ export class LibraryPageComponent {
     { value: 'numberOfReads', label: 'N. Letture (dal meno letto)' },
   ];
 
-  constructor(public apiservice: ApiService, private _router: Router) { }
+  constructor(public apiservice: ApiService, private _router: Router, private route: ActivatedRoute) {
+    _router.events.subscribe(($event) => {
+      if ($event instanceof NavigationEnd) {
+        console.log($event.url);
+        this.getUrlValues();
+        this.searchBooks();
+      }
+    })
+  }
 
   ngOnInit () {
-    this.listAllBooks()
+    // search params in route
+    this.getUrlValues();
+    this.searchBooks();
   }
 
-  listAllBooks() {
-    this.searchBook();
+  getUrlValues () {
+    // search params in route
+    this.route.queryParams
+    .subscribe((params) => {
+      this.sort = params['sort'] || this.sort;
+      this.size = params['size'] || this.size;
+      this.search = params['search'] || this.search;
+      this.page = params['page'] || this.page;
+    })
   }
 
-  searchBook () {
+  searchBooks () {
     let params = { 'sort': this.sort, 'search': this.search };
     this.apiservice.searchBooks(params).subscribe(
       res => {
-        console.log(res.content);
+        // console.log(res.content);
         this.books = res.content;
         this.books = res.content;
         this.currentPage = res.number;
@@ -60,7 +77,7 @@ export class LibraryPageComponent {
 
   updateSearch (s:string) {
     this.search = (s.length > 0) ? s : '';
-    this.searchBook();
+    this.searchBooks();
   }
 
   goToLibrary () {
