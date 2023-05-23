@@ -20,7 +20,7 @@ export class CreateBookPageComponent {
         this._router.navigate(['book', res.id])
       },
       (e) => {
-        console.error(e);
+        alert("Errore nell'inserimento. Controlla i campi");
       }
     );
   }

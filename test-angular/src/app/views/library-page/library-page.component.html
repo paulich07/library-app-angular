@@ -16,20 +16,9 @@
                 {{ totalElements }} libri trovati {{ search.length > 0 ? 'per "' + search + '"' : ''  }}
             </span>
         </div>
-        <div class="col">
 
-            <!--nav class="d-flex mx-auto">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Precedente</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Successivo</a></li>
-                </ul>
-            </nav-->
 
-        </div>
-        <div class="col-3">
+        <div class="col-3 ms-auto">
             <select class="form-select" [(ngModel)]="sort" (ngModelChange)="searchBooks()">
                 <option *ngFor="let option of filterOptions" [value]="option.value">
                     {{ option.label }}
@@ -38,24 +27,24 @@
         </div>
     </div>
     
-    <app-book-list [bookList]="books"></app-book-list>
+    <app-book-list class="container-fluid" [bookList]="books | paginate: paginationConfig"></app-book-list>
 
     <div class="row">
-        <div class="col-auto m-auto">
-            <!--nav>
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Precedente</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Successivo</a></li>
-                </ul>
-            </nav-->
+        <div class="col-4 d-flex">
+            <span class="text-nowrap my-auto me-2">
+                Risultati per pagina
+            </span>
+            <select class="form-select w-auto" [(ngModel)]="size" (ngModelChange)="searchBooks()">
+                <option *ngFor="let option of sizeOptions" [value]="option.value">
+                    {{ option.label }}
+                  </option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <pagination-controls class="pagination" (pageChange)="onPageChange($event)" previousLabel="Precedente" nextLabel="Successivo"></pagination-controls>
         </div>
     </div>
 </div>
-
-
 
 <ng-template #nullBlock>
     <div class="row m-5">
@@ -63,7 +52,7 @@
             Nessun libro trovato
         </div>
         <div class="col text-center">
-            <button class="btn btn-primary" (click)="goToLibrary()">Torna all'elenco</button>
+            <button class="btn btn-primary" (click)="goToLibrary()">Torna alla libreria</button>
         </div>
     </div>
 </ng-template>

@@ -13,6 +13,7 @@ import { BookDetailsPageComponent } from './views/book-details-page/book-details
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { FormBookComponent } from './components/form-book/form-book.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormBookComponent } from './components/form-book/form-book.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

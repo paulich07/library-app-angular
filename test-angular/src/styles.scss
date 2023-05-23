@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-$background-image: "~@/assets/images/background.svg";
 
 html,
 body {
@@ -26,40 +25,21 @@ label {
 
 .app {
   min-height: 100%;
-  // background-image: url('./assets/images/background.svg');
-  // background-position: center;
-  // background-size: 100%;
-  // background-repeat: no-repeat;
-  // background-attachment: contain;
-  background-color: #FFF3E8;
+  overflow: auto;
+  background-color: #f7f5f5;
 }
-
-/*
-.navbar {
-  position: relative;
-  .nav-menu {
-      width: fit-content;
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
-      display: flex;
-      .nav-link {
-          border: 1px solid grey;
-          border-radius: 20px;
-          padding: 10px;
-          &:active {
-              background: grey;
-              color: white;
-          }
-      }
-  }
-}
-*/
 
 .book-item {
-  // border: 2px solid red;
   background: #FFFCF9;
   height: 120px;
   max-width: 800px;
+}
+
+ul {
+  li {
+    border-radius: 8px!important;
+  }
+  &.ngx-pagination {
+    margin-bottom: 0;
+  }
 }

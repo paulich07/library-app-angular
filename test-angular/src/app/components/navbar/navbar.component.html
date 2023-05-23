@@ -1,19 +1,19 @@
-<div class="navbar navbar-expand-lg navbar-light bg-light px-5">
+<div class="navbar navbar-expand-lg navbar-light bg-light px-5 shadow-sm">
     <a class="navbar-brand" [routerLink]="['/']">
         <img src="/assets/images/read-book-icon.png" width="30" height="20" alt="book image">
         Libreria
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a [routerLink]="['/']" [routerLinkActive]="['is-active']" class="nav-link">Libreria</a></li>
             <li class="nav-item"><a [routerLink]="['/create']" [routerLinkActive]="['is-active']" class="nav-link">Aggiungi libro</a></li>
         </ul>
-    
+
         <app-search-box class="ms-auto" (searchBookInParent)="searchBookInLibrary($event)"></app-search-box>
     </div>
 </div>
